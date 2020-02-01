@@ -1,0 +1,6 @@
+# Ignore all .vscode dir
+**/.vscode
+
+# Ignore jupyter notebooks checkpoints
+.ipynb_checkpoints
+
