@@ -13,6 +13,11 @@ All metaheuristic algorithms use a certain tradeoff of randomization and local s
 * diversification: generates diverse solutions to explore the search space on a global scale.
 * intensification: focus the search on a local region, knowing that a current good solution could be found in this region.
 
-This repository provides some experimental implementation of some of the metaheuristics algorithms:
-* Genetic Algorithm
+# Metaheuristic algorithms
+This repository provides some experimental implementation of some of the metaheuristics algorithms. The implementations are based on the book:
 
+ **Meta‐Heuristic and Evolutionary Algorithms for Engineering Optimization.**
+ <br>(*Author(s): Omid Bozorg‐Haddad Mohammad Solgi Hugo A. Loáiciga*).
+
+The algorithms implemented so far are:
+* Genetic Algorithm
