@@ -29,10 +29,10 @@ We ran the algorithm with a ***population size of 30*** and ***800 generations**
 
 A plot of the fitness value as a function of the number of evaluation is shown below (with y axes using a log scale).
 
-![](shifted-sphere-50-GEN-PSO-log.png)
+![](shifted-sphere-50-PSO-GEN-log.png)
 
 ## Dimension 500, 10 runs
-In dimension 50, we used both the **Particle Swarm Optimisation GENerational** algorithm and the **Self-Adaptative Differential Evolution** (also from Pygmo package) as comparison. PSO-GEN was used with the same configuration as for dimension 50. For SADE, we used the following configuration:
+In dimension 500, we used both the **Particle Swarm Optimisation GENerational** algorithm and the **Self-Adaptative Differential Evolution** (also from Pygmo package) as comparison. PSO-GEN was used with the same configuration as for dimension 50. For SADE, we used the following configuration:
 
 |SADE parameter|value|
 |------------|-----|
@@ -67,5 +67,6 @@ A plot of the fitness value as a function of the number of evaluation is shown b
 |Difference with function's optimum value|0.0001484|
 |L2 norm to optimum solution|0.0121813|
 
+A plot of the fitness value as a function of the number of evaluation is shown below (with y axes using a log scale).
 
-![](shifted-sphere-500-GEN-PSO-log.png)
+![](shifted-sphere-500-PSO-GEN-log.png)
