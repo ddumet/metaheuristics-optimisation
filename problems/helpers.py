@@ -132,6 +132,51 @@ def sade(problem, population_size, params):
     return(log, duration, solution.champion_f, solution.champion_x)
 
 
+def cma_es(problem, population_size, params):
+    '''
+    Execute the Pygmo CMA_ES algorithm on an
+    optimisation problem with the population size
+    and parameters specified. The CMA_ES possible
+    set of parameters are:
+    * sigma0: initial step size
+    * ftol: stopping criteria on the function tolerance
+    * xtol: stopping criteria on the step tolerance
+
+    Parameters
+    ----------
+    - problem: the problem to optimise. It must comply
+        to the Pygmo requirements, i.e. being an
+        instance of an UDP class
+    - population_size: The size of the population
+    - params: dictionnary of parameters for the
+        CMA_ES algorithm
+
+    Return
+    ------
+    - log: the logs of the execution of the
+        optimisation problem with the population size
+    - duration: the total duration of the resolution
+        of the  problem
+    '''
+    # Extract algorithm parameters
+    nb_generation = params["nb_generation"]
+    sigma0 = params["sigma0"]
+    ftol = params["ftol"]
+    xtol = params["xtol"]
+
+    algo = pg.algorithm(pg.cmaes(gen=nb_generation, sigma0=sigma0,
+                                 ftol=ftol, xtol=xtol))
+    algo.set_verbosity(1)
+    solution = pg.population(problem, size=population_size, b=None)
+    startt = datetime.now()
+    solution = algo.evolve(solution)
+    duration = (datetime.now() - startt)
+    uda = algo.extract(pg.cmaes)
+    log = uda.get_log()
+
+    return(log, duration, solution.champion_f, solution.champion_x)
+
+
 def plot_f_minus_fstar_10(runs, f_optimum, title="title",
                           ylog=True, ylim=None, figsize=(10, 12)):
     '''
@@ -171,8 +216,7 @@ def plot_f_minus_fstar_10(runs, f_optimum, title="title",
             duration = "{0}mn:{1}s".format(run[2].seconds//60,
                                            run[2].seconds % 60)
 
-        # champion_f is a np.array -> [0]
-        champion_f = "{0:.9f}".format(run[3][0])
+        champion_f = "{0:.9f}".format(run[3])
 
         fevals = np.array(run[0])
         fit_best = np.array(run[1]) - f_optimum
@@ -189,7 +233,7 @@ def plot_f_minus_fstar_10(runs, f_optimum, title="title",
     ax.legend()
 
 
-def get_stats(runs, optimum_f, optimum_x):
+def get_stats(runs, optimum_f, optimum_x, popsize):
     '''
     Print main statistics of several runs
 
@@ -205,29 +249,40 @@ def get_stats(runs, optimum_f, optimum_x):
     - optimum_f: the optimum function value
         for this problem
     - optimum_x: the x coordinates of the optimum
+    - popsize: population size
 
     Return
     ------
-    The following values for the "best" run,
-    defined by the run getting the best fitness
-    (champion_f)
+    A dictionnary of the following values for
+    the "best" run (defined by the run getting
+    the best fitness (champion_f))
     - duration
     - difference with the function's optimum
     - the L2 norm (euclidean distance) to the
         optimum solution
+    - number of function evaluations
     '''
     best_run_champion_f = np.inf
     for run in runs:
         # run[3] is a np.array
-        if run[3][0] < best_run_champion_f:
-            best_run_champion_f = run[3][0]
+        if run[3] < best_run_champion_f:
+            best_run_champion_f = run[3]
             best_run_duration = run[2]
             best_run_champion_x = run[4]
+            best_run_fevals = len(run[0])
 
     diff_optimum = best_run_champion_f - optimum_f
     dimension = best_run_champion_x.shape[0]
     norm2_to_optimum = np.linalg.norm(best_run_champion_x
                                       - optimum_x[:dimension])
+    best_run_fevals = best_run_fevals * popsize
 
-    return(best_run_duration, best_run_champion_f,
-           diff_optimum, norm2_to_optimum)
+    stats = {
+        "duration": best_run_duration,
+        "best_champion_f": best_run_champion_f,
+        "diff_optimum": diff_optimum,
+        "norm2_to_optimum": norm2_to_optimum,
+        "nb_fevals": best_run_fevals
+            }
+
+    return(stats)
