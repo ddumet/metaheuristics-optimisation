@@ -49,7 +49,7 @@ The best results for SADE and GEN-PSO are presented below.
 
 |SADE Results| |
 |------------|-----|
-|Number of function evaluations|375,000|
+|Number of function evaluations|374,100|
 |Duration|11 s|
 |Best f value|-449.9996575|
 |Difference with function's optimum value|0.0003425|
