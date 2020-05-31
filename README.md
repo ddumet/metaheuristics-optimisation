@@ -14,17 +14,14 @@ All metaheuristic algorithms use a certain tradeoff of randomization and local s
 * intensification: focus the search on a local region, knowing that a current good solution could be found in this region.
 
 # Metaheuristic problems
-This repository contains some of the most standards continuous optimisation problems (e.g. Rosenbrock or Griewank functions) and their resolution using metaheuristics algorithms.
+This repository contains some of the most standards continuous optimisation problems (e.g. **Rosenbrock** or **Griewank** functions) and their resolution using metaheuristics algorithms.
 
-It also contains some discrete optimisation problems, i.e. **Travelling Salesman Problem**.
+It also contains some discrete optimisation problems, i.e. two **Travelling Salesman Problems**.
 
 All these problems can be found [here](https://github.com/ddumet/metaheuristics-optimisation/tree/master/problems)
 
 # Metaheuristic algorithms
-This repository provides some experimental implementation of some of the metaheuristics algorithms. The implementations are based on the book:
-
- **Meta‐Heuristic and Evolutionary Algorithms for Engineering Optimization.**
- <br>(*Author(s): Omid Bozorg‐Haddad Mohammad Solgi Hugo A. Loáiciga*).
+This repository also provides implementation of some of the metaheuristics algorithms.
 
 The algorithms implemented so far are:
-* Genetic Algorithm
+* Genetic Algorithm (with some limited operators, i.e. not all selection, crossover and mutation operators have been implemented !). The GA implementation can be found [here](https://github.com/ddumet/metaheuristics-optimisation/tree/master/algorithms/ga)
