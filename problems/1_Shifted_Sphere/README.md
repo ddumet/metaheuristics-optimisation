@@ -6,7 +6,7 @@ The Shifted Sphere problem is described below as per the **CEC'2008 competition*
 This problem has only one optimum. We had therefore favor **intensification** over **diversification**.
 
 ## Dimension 50, 10 runs
-In dimension 50, we used the **Particle Swarm Optimisation GENerational** algorithm (from Pygmo package), with the following configuration:
+In dimension 50, we used the **Particle Swarm Optimisation GENerational** algorithm (from Pygmo package) favoring intensification by a high value for the cognitive component and a swarm topology of local best.
 
 |PSO-GEN parameter|value|
 |------------|-----|
@@ -32,7 +32,7 @@ A plot of the fitness value as a function of the number of evaluation is shown b
 ![](shifted-sphere-50-PSO-GEN-log.png)
 
 ## Dimension 500, 10 runs
-In dimension 500, we used both the **Particle Swarm Optimisation GENerational** algorithm and the **Self-Adaptative Differential Evolution** (also from Pygmo package) as comparison. PSO-GEN was used with the same configuration as for dimension 50. For SADE, we used the following configuration:
+In dimension 500, we used both the **Particle Swarm Optimisation GENerational** algorithm and the **Self-Adaptative Differential Evolution** (also from Pygmo package) as comparison. PSO-GEN was used with the same configuration as for dimension 50. For SADE, we used a mutation variant that builds trial solutions still based on the best solution so far (therefore favoring intensification).
 
 |SADE parameter|value|
 |------------|-----|
