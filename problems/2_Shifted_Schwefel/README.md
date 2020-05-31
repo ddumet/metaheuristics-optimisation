@@ -3,10 +3,10 @@ The Shifted Schwefel problem is described below as per the CEC'2008 competition 
 
 ![](shifted-schwefel-problem.png)
 
-## Dimension 50, 10 runs
 This problem is a unimodal function and therefore a favoring **intensification** over **diversification** seems to be a good idea.  However, given the shape of the function and possible "plateaux" close to the optimum, having a good balance between both works better.
 
-We've tried both **Particle Swarm Optimisation GENerational** algorithm and the **Self-Adaptative Differential Evolution** algorithms, with PSO_GEN being quickly stuck close to the optimum. SADE on the controry can easily converge to the optimum.
+## Dimension 50, 10 runs
+We've tried both **Particle Swarm Optimisation GENerational** algorithm and the **Self-Adaptative Differential Evolution** algorithms, with PSO_GEN being quickly stuck close to the optimum. SADE on the controry can easily converge to the optimum. For both algorithm we've chosen configuration that should balance intensification and diversification, i.e. for **PSO-GEN** having a similar medium value for the social and cognitive components as well as a global best swarm topology, and for **SADE** having a mutation variant that uses both random and the best solution so far to create new solution.
 
 Configuration used for PSO_GEN and SADE were:
 
@@ -55,7 +55,7 @@ A plot of the fitness value as a function of the number of evaluation is shown b
 ![](shifted-schwefel-50-PSO-GEN-log.png)
 
 ## Dimension 500, 10 runs
-In dimension 500, we again used the **Self-Adaptative Differential Evolution** with the same configuration. Because of this problem being unimodal we could choose to keep a low population (i.e. favoring **intensification**). The best results obtained for a ***population size of 50*** and ***100000 generations*** are shown below:
+In dimension 500, we again used the **Self-Adaptative Differential Evolution** with the same configuration. Because of this problem being unimodal we could choose to keep a low population (i.e. favoring **intensification**). The best result obtained for a ***population size of 50*** and ***100000 generations*** is shown below:
 
 |SADE Results| |
 |------------|-----|
