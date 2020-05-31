@@ -13,6 +13,13 @@ All metaheuristic algorithms use a certain tradeoff of randomization and local s
 * diversification: generates diverse solutions to explore the search space on a global scale.
 * intensification: focus the search on a local region, knowing that a current good solution could be found in this region.
 
+# Metaheuristic problems
+This repository contains some of the most standards continuous optimisation problems (e.g. Rosenbrock or Griewank functions) and their resolution using metaheuristics algorithms.
+
+It also contains some discrete optimisation problems, i.e. **Travelling Salesman Problem**.
+
+All these problems can be found here: ([https://github.com/ddumet/metaheuristics-optimisation/tree/master/problems])
+
 # Metaheuristic algorithms
 This repository provides some experimental implementation of some of the metaheuristics algorithms. The implementations are based on the book:
 
