@@ -18,7 +18,7 @@ This repository contains some of the most standards continuous optimisation prob
 
 It also contains some discrete optimisation problems, i.e. **Travelling Salesman Problem**.
 
-All these problems can be found here: https://github.com/ddumet/metaheuristics-optimisation/tree/master/problems
+All these problems can be found (here)[https://github.com/ddumet/metaheuristics-optimisation/tree/master/problems]
 
 # Metaheuristic algorithms
 This repository provides some experimental implementation of some of the metaheuristics algorithms. The implementations are based on the book:
